@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../todoList/css/main.css">
+    <title>toDoList</title>
+</head>
+<body>
+<div id="app">
+    <p  class="p-2" style="font-family: 'Arial Black';font-size:15px" >ToDoList </p>
+    <input type="text" v-model="val" @keyup="add" class="">
+    <ul class="list-unstyled">
+        <li class="list-inline-item list-group-item-action" v-for="(a,index) in arr">
+             {{a}}   <button class="btn-sm btn-danger" @click="remove(index)">删除</button>
+        </li>
+    </ul>
+</div>
+
+
+<script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+<script type="text/javascript" src="../node_modules/jQuery/jQuery.js"></script>
+<script type="text/javascript" src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../todoList/js/main.js"></script>
+</body>
+</html>

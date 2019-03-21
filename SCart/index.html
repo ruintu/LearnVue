@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="app">
+   <div class="container">
+       <div class="row">
+           <table class="table table-hover table-bordered">
+               <caption class="h2 text-primary text-center" style="caption-side: initial;">zxw购物车</caption>
+               <tr>
+                   <th>全选 <input type="checkbox" v-model="checkAll">  </th>
+                   <td>商品</td>
+                   <td>单价</td>
+                   <td>数量</td>
+                   <td>小计</td>
+                   <td>操作</td>
+               </tr>
+               <tr v-for="(product ,index ) in products">
+                   <td  ><input type="checkbox" v-model="product.isSelected"></td>
+                   <td><img :src="product.productCover" :title="product.productName">
+                      {{product.productName}}
+                   </td>
+                   <td>{{product.productPrice}}</td>
+                   <!-- type=number 是让输入框只能输入的是数字 .number是让输入框获取出来的变成数字而不是字符串 -->
+                   <td>
+                       <input type="number" v-model.number="product.productCount" min="1"></td>
+                   <td>
+                       {{product.productCount*product.productPrice | toFixed(2)}}
+                   </td>
+                   <td >
+                       <button class="btn btn-danger" @click="remove(product)">删除</button>
+                   </td>
+
+               </tr>
+
+               <tr>
+                   <td colspan="6">总价格：{{sum() | toFixed(2)}}</td>
+               </tr>
+           </table>
+       </div>
+
+   </div>
+
+</div>
+
+<script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+<script type="text/javascript" src="../node_modules/axios/dist/axios.js"></script>
+<script type="text/javascript" src="../node_modules/jQuery/jQuery.js"></script>
+<script type="text/javascript" src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../SCart/js/mianlv.js"></script>
+</body>
+</html>
